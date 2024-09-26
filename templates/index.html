@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Gráfico em Flask</title>
+</head>
+<body>
+    <h1>Gráfico de Dados</h1>
+    <button id="load-chart">Carregar Gráfico</button>
+    <img id="chart" src="" alt="Gráfico" style="display:none;">
+    <script>
+        document.getElementById('load-chart').onclick = function() {
+            fetch('/grafico')
+                .then(response => response.json())
+                .then(data => {
+                    const img = document.getElementById('chart');
+                    img.src = data.url;
+                    img.style.display = 'block';
+                });
+        };
+    </script>
+</body>
+</html>

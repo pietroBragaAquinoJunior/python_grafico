@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Produtos</title>
+    <style>
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">Lista de Produtos</h1>
+
+    <form method="GET" action="/produtos" style="text-align: center; margin-bottom: 20px;">
+        <input type="text" name="filtro" value="{{ filtro }}" placeholder="Filtrar produtos..." />
+        <button type="submit">Filtrar</button>
+    </form>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Preço</th>
+                <th>Quantidade</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for produto in produtos %}
+            <tr>
+                <td>{{ produto.id }}</td>
+                <td>{{ produto.nome }}</td>
+                <td>{{ produto.preco }}</td>
+                <td>{{ produto.quantidade }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    {% if produtos|length == 0 %}
+    <p style="text-align: center;">Nenhum produto encontrado.</p>
+    {% endif %}
+</body>
+</html>

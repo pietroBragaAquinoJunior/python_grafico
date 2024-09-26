@@ -1,0 +1,15 @@
+services:
+  db:
+    image: postgres:latest
+    container_name: postgres_db
+    environment:
+      POSTGRES_DB: seu_banco          # Nome do banco de dados
+      POSTGRES_USER: seu_usuario       # Nome do usuário
+      POSTGRES_PASSWORD: sua_senha     # Senha do usuário
+    ports:
+      - "5432:5432"                    # Mapeia a porta 5432 do contêiner para a máquina host
+    volumes:
+      - postgres_data:/var/lib/postgresql/data  # Persistência de dados
+
+volumes:
+  postgres_data:
